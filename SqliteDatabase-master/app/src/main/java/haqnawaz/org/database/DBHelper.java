@@ -59,11 +59,12 @@ public class DBHelper extends SQLiteOpenHelper {
             Cursor cursor=DB.rawQuery(query,null);
             if(cursor.moveToFirst()){
                 do{
+                    int id= cursor.getInt(0);
                     String custName=cursor.getString(1);
                     int custAge=cursor.getInt(2);
                     Boolean isActive=cursor.getInt(3)==1?true:false;
 
-                    CustomerModel newCustomerModel=new CustomerModel(custName,custAge,isActive,1);
+                    CustomerModel newCustomerModel=new CustomerModel(custName,custAge,isActive,id);
                     myList.add(newCustomerModel);
                 }while(cursor.moveToNext());
             }
@@ -71,5 +72,13 @@ public class DBHelper extends SQLiteOpenHelper {
             DB.close();
             return myList;
         }
+/*
+    public void deleteCustomer(String deleteID)
+    {
+        SQLiteDatabase sqLiteDatabase=this.getWritableDatabase();
+        sqLiteDatabase.delete(CUST_TABLE,CUSTOMER_ID+"=?",new String[]{String.valueOf(customerModel.getid())});
+        sqLiteDatabase.close();
+
+    }*/
 
 }

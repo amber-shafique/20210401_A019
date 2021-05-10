@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     ListView listViewCustomer;
     ArrayAdapter<CustomerModel> arrayAdapter;
     DBHelper dbHelper;
+    CustomerModel customerModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +34,18 @@ public class MainActivity extends AppCompatActivity {
         switchIsActive = findViewById(R.id.switchCustomer);
         listViewCustomer = findViewById(R.id.listViewCustomer);
         RefreshData();
+      /*  customerModel=dbHelper.getAllCustomer();
+
+        listViewCustomer.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                dbHelper.deleteCustomer(customerModel.get(position));
+                customerModel=dbHelper.getAllCustomer;
+                RefreshData();
+            }
+        });*/
+
+
         buttonAdd.setOnClickListener(new View.OnClickListener() {
             CustomerModel customerModel;
 
